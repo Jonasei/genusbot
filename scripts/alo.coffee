@@ -5,7 +5,7 @@ robot.hear /alo kontroll ([\w.-]*):?/i, (res) ->
   if user
     kontrollMessage = "Har du kontroll, " + username + "?"
     setTimeout () ->
-       res.send "Har du kontroll, ?"
+       res.send kontrollMessage
       , 10 * 1000
   else
     res.send "Har dere kontroll?"
