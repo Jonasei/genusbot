@@ -1,6 +1,6 @@
 module.exports = (robot) ->
 
-	robot.hear /alo kontroll/i, (res) ->
+	robot.hear /alo/i, (res) ->
 	  
 	  # if res.match
 	  # 	res.send "user"
