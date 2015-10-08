@@ -6,7 +6,7 @@ module.exports = (robot) ->
 		index = parseInt((Math.random() * aloMessages.length) >> 0)
 		message = aloMessages[index]
 	  
-	robot.hear /alo/i, (res) ->
+	robot.hear /\balo\b/i, (res) ->
 	  
 	  # if res.match
 	  # 	res.send "user"
