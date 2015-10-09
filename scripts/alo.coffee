@@ -1,23 +1,16 @@
 module.exports = (robot) ->
 
-	aloMessages = [":aloji: Har dere kontroll?", ":aloji: Hvor er du?", ":aloji: Er dere på saken?", ":aloji: Det er du som har tatt roastbiffen, ja?", ":aloji: Det er faktisk ganske interessant..."]
+	aloMessages = ["Har dere kontroll?", "Hvor er du?", "Er dere på saken?", "Det er du som har tatt roastbiffen, ja?", "Det er faktisk ganske interessant..."]
+	aloMessagesName = ["Har du kontroll, {name}?", "{name}, hvor er du?", "Er du på saken, {name}?", "Bena på pulten er ikke lov, {name}!"]
 
-	aloMessage = () ->
-		index = parseInt((Math.random() * aloMessages.length) >> 0)
-		message = aloMessages[index]
+	aloMessageName = (name) ->
+		index = parseInt((Math.random() * aloMessagesName.length) >> 0)
+		message = ":aloji: " + aloMessagesName[index]
+		message.replace(/{name}/, name);
 	  
-	robot.hear /\balo\b/i, (res) ->
-	  
-	  # if res.match
-	  # 	res.send "user"
-	  # 	user = res.match[1]
+	robot.hear /\balo$/i, (res) ->
+		res.send ":aloji: " + res.random aloMessages
 
-	  # res.send user
-
-	  # if user
-	  #   kontrollMessage = "Har du kontroll, " + user + "?"
-	  #   setTimeout () ->
-	  #      res.send kontrollMessage
-	  #     , res.match[2] * 1000
-	  # else
-		res.send(aloMessage())
+	robot.hear /\balo\b(\s)+(.+)/i, (res) ->
+		user = res.match[2]
+		res.send(aloMessageName(user))
