@@ -11,6 +11,6 @@ module.exports = (robot) ->
 	robot.hear /\balo$/i, (res) ->
 		res.send ":aloji: " + res.random aloMessages
 
-	robot.hear /\balo\b(\s)+(.+)/i, (res) ->
+	robot.hear /\balo\b(\s+@)(\w+)/i, (res) ->
 		user = res.match[2]
 		res.send(aloMessageName(user))
